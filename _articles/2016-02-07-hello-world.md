@@ -1,4 +1,9 @@
-# Hello world!
+---
+layout: "post"
+title: "Hello world!"
+description: "Testing description"
+date: "2016-02-07 21:44"
+---
 
 Well, here I am! Writing again in a blog. **I want to try to start writing in English**, as I need to improve it (although I might write something in Spanish sometime), so it will be a good experiment to try to express myself about topics that I care in that language.
 
