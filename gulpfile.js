@@ -3,8 +3,16 @@
 const gulp = require('gulp')
 const surge = require('gulp-surge')
 const htmlmin = require('gulp-htmlmin')
-const del = require('del')
 const stylus = require('gulp-stylus')
+const ejs = require('gulp-ejs')
+
+gulp.task('create-index', () => {
+  gulp
+    .src('./_layouts/index.ejs')
+    .pipe(ejs({}, {ext: '.html'}))
+    .pipe(htmlmin({collapseWhitespace: true}))
+    .pipe(gulp.dest('./www/'))
+})
 
 gulp.task('watch', () => {
   gulp.watch('./index.html', ['minify-html'])
@@ -17,14 +25,6 @@ gulp.task('compily-stylus', () => {
       compress: true
     }))
     .pipe(gulp.dest('./www/'))
-})
-
-gulp.task('minify-html', () => {
-  del(['www/index.html']).then(paths => {
-    gulp.src('index.html')
-      .pipe(htmlmin({collapseWhitespace: true}))
-      .pipe(gulp.dest('www'))
-  })
 })
 
 gulp.task('deploy', [ 'minify-html' ], () => {
