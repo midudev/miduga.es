@@ -27,7 +27,7 @@ gulp.task('compily-stylus', () => {
     .pipe(gulp.dest('./www/'))
 })
 
-gulp.task('deploy', [ 'minify-html' ], () => {
+gulp.task('deploy', [ 'create-index' ], () => {
   return surge({
     project: './www', // Path to your static build directory
     domain: 'miduga.es'  // Your domain or Surge subdomain
