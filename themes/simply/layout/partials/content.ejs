@@ -1,0 +1,57 @@
+<% function calculatePostReadTime (post) {
+  return Math.ceil(post.content.replace(/[^a-zA-Z\s]/g, '').split(/[\s]+/).length / 250)
+} %>
+
+<% function getPostDate (post) {
+  var date = new Date(post.date)
+  var months = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec']
+  var formattedDate = months[date.getMonth()] + ' ' + date.getDate() + ", " + date.getFullYear()
+  return formattedDate
+} %>
+
+<% function getPostExcerpt (post) {
+  return strip_html(truncate(post.content, { length: 300, separator: ' ', omission: '' }))
+} %>
+
+<% function renderFullArtice (post) { %>
+  <article id='content' class='post' itemscope itemprop='blogPost' itemtype='https://schema.org/BlogPosting'>
+    <header class='post-header'>
+      <h2 class='post-title' itemprop='headline'>
+        <%= post.title %>
+      </h2>
+      <div class='post-meta'>
+        <time class='post.ago' itemprop='datePublished' datetime='<%= post.date.toISOString() %>'><%= getPostDate(post) %></time>
+        <span class='post-dot-divider'>·</span>
+        <span class='post-read'><%= calculatePostReadTime(post) %> min read</span>
+      </div>
+    </header>
+    <div class='post-content'>
+      <%- post.content %>
+    </div>
+  </article>
+<% } %>
+
+<% function renderPost (post) { %>
+  <article class='post post-list' itemscope itemprop='blogPost' itemtype='https://schema.org/BlogPosting'>
+    <header class='post-header'>
+      <h2 class='post-title' itemprop='headline'>
+        <a href='<%= config.root %><%= post.path %>#content'><%= post.title %></a>
+      </h2>
+      <div class='post-meta'>
+        <time class='post.ago' itemprop='datePublished' datetime='<%= post.date.toISOString() %>'><%= getPostDate(post) %></time>
+        <span class='post-dot-divider'>·</span>
+        <span class='post-read'><%= calculatePostReadTime(post) %> min read</span>
+      </div>
+    </header>
+    <blockquote class='post-excerpt' itemprop='text'>
+      <%= getPostExcerpt(post) %>
+    </blockquote>
+    <a class='post-meta post-read-more' href="<%= config.root %><%= post.path %>#content">Read more...</a>
+  </article>
+<% } %>
+
+<% if (is_home()) {
+  site.posts.sort('date', 'desc').each(renderPost)
+} else if (is_post()) {
+  renderFullArtice(page)
+} %>

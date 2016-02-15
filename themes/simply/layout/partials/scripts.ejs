@@ -1,0 +1,10 @@
+<% if (config.disqus_shortname) { %>
+<% } %>
+
+<% if (theme.google_analytics) { %>
+  <script>
+  window.ga=function(){ga.q.push(arguments)};ga.q=[];ga.l=+new Date;
+  ga('create','#{theme.google_analytics}','auto');ga('send','pageview')
+  </script>
+  <script async defer src="https://www.google-analytics.com/analytics.js"></script>
+<% } %>

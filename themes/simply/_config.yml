@@ -1,0 +1,13 @@
+logo: /images/miduga.png
+keywords: "developer development"
+menu:
+  Home: /
+  Articles: /articles
+  About: /about
+
+# Content
+excerpt_link: Read more
+
+# Miscellaneous
+rss: /atom.xml
+google_analytics: UA-30525085-1
