@@ -2,6 +2,7 @@
 title: Hi World! I'm Miduga
 date: "2016-02-07 21:44"
 permalink: hello-world
+image: "hello-world-post.jpg"
 ---
 
 Well, here I am! Writing again in a blog. Some years ago I had a videogames blog called [WildGames](http://wildgames.es) and, after that, I always wanted to write again. This time, however, it will be focused mainly to development. However, I may talk about another topics (videogames, movies, tv shows...)

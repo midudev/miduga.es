@@ -14,6 +14,9 @@
 } %>
 
 <% function renderFullArtice (post) { %>
+  <% if (post.image) { %>
+    <img src='/images/<%= post.image %>' />
+  <% } %>
   <article id='content' class='post' itemscope itemprop='blogPost' itemtype='https://schema.org/BlogPosting'>
     <header class='post-header'>
       <h2 class='post-title' itemprop='headline'>
