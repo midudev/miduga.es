@@ -1,3 +1,11 @@
+
+<%- js( 'scripts/particles.min') %>
+<script>
+particlesJS.load('header', '<%= url_for("scripts/particles.json") %>', function () {
+  console.log('callback - particles.js config loaded')
+})
+</script>
+
 <% if (config.disqus_shortname) { %>
 <% } %>
 
