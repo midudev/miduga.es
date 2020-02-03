@@ -1,6 +1,6 @@
 {
   "name": "miduga.es",
   "version": 2,
-  "alias": ["miduga.es"],
+  "alias": ["www.miduga.es", "miduga.es"],
   "trailingSlash": false
 }
